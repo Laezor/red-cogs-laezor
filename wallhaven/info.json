@@ -1,0 +1,16 @@
+{
+    "author": ["Laezor"],
+    "description": "Get a random Wallhaven image!",
+    "disabled": false,
+    "end_user_data_statement": "",
+    "hidden": false,
+    "install_msg": "Thank you for installing! Use [p]wallhaven to get a random Wallhaven image!",
+    "min_bot_version": "3.5.3",
+    "min_python_version": [3, 10, 0],
+    "permissions": ["administrator"],
+    "required_cogs": {},
+    "requirements": [],
+    "short": "Get a random Wallhaven image!",
+    "tags": ["fun"],
+    "type": "COG"
+  }
