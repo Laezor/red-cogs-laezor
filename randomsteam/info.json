@@ -1,0 +1,16 @@
+{
+    "author": ["Laezor"],
+    "description": "Get a random Steam game with a shuffling animation!",
+    "disabled": false,
+    "end_user_data_statement": "",
+    "hidden": false,
+    "install_msg": "Thank you for installing! Use `[p]randomsteam` to get a random Steam game!",
+    "min_bot_version": "3.5.3",
+    "min_python_version": [3, 10, 0],
+    "permissions": ["administrator"],
+    "required_cogs": {},
+    "requirements": [],
+    "short": "Get a random Steam game with a shuffling animation!",
+    "tags": ["fun"],
+    "type": "COG"
+  }
