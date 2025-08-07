@@ -1,4 +1,4 @@
-import nextcord
+import discord
 from redbot.core import commands
 import aiohttp
 
@@ -37,11 +37,11 @@ class Crocdb(commands.Cog):
 
                     info_url = f"https://crocdb.net/entry/{slug}"
 
-                    embed = nextcord.Embed(
+                    embed = discord.Embed(
                         title=title,
                         url=info_url,
                         description=f"🕹️ **{title}** on **{platform.upper()}**",
-                        color=nextcord.Color.red()
+                        color=discord.Color.red()
                     )
                     embed.add_field(name="Region", value=region.upper(), inline=True)
                     embed.add_field(name="Format", value=format_, inline=True)
