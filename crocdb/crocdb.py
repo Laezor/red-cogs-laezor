@@ -10,7 +10,7 @@ class Crocdb(commands.Cog):
 
     @commands.command()
     async def crocdb(self, ctx):
-        """Get a random game scoop from CrocDB.net."""
+        """Get a random game from CrocDB.net."""
         api_url = "https://api.crocdb.net/entry/random"
 
         async with aiohttp.ClientSession() as session:
