@@ -36,7 +36,7 @@ class Crocdb(commands.Cog):
                     host = link.get("host", "Unknown Host")
                     download_url = link.get("url", "No link")
 
-                    info_url = f"https://crocdb.net/entry/{slug}"
+                    info_url = f"https://crocdb.net/rom/{slug}"
 
                     embed = discord.Embed(
                         title=title,
