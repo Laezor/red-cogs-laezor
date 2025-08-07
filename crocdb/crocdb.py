@@ -21,7 +21,7 @@ class Crocdb(commands.Cog):
                         return
 
                     data = await response.json()
-                    print(data)
+                    
                     entry = data.get("data", {}).get("entry", {})
                     title = entry.get("title", "Unknown Title")
                     platform = entry.get("platform", "Unknown Platform")
