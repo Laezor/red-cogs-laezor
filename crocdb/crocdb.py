@@ -2,7 +2,7 @@ import nextcord
 from redbot.core import commands
 import aiohttp
 
-class Scoop(commands.Cog):
+class Crocdb(commands.Cog):
     """Get a random retro game from CrocDB."""
 
     def __init__(self, bot):
