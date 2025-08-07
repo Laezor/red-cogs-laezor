@@ -22,7 +22,7 @@ class Crocdb(commands.Cog):
 
                     data = await response.json()
                     print(data)
-                    entry = data.get("entry", {})
+                    entry = data.get("data", {}).get("entry", {})
                     title = entry.get("title", "Unknown Title")
                     platform = entry.get("platform", "Unknown Platform")
                     regions = entry.get("regions", [])
