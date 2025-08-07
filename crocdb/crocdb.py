@@ -28,7 +28,7 @@ class Crocdb(commands.Cog):
                     regions = entry.get("regions", [])
                     slug = entry.get("slug", "")
                     links = entry.get("links", [])
-
+                    boxart = entry.get("boxart_url", "")
                     region = regions[0] if regions else "N/A"
                     link = links[0] if links else {}
                     format_ = link.get("format", "Unknown Format")
@@ -44,6 +44,7 @@ class Crocdb(commands.Cog):
                         description=f"🕹️ **{title}** on **{platform.upper()}**",
                         color=discord.Color.red()
                     )
+                    embed.set_thumbnail(url=boxart)
                     embed.add_field(name="Region", value=region.upper(), inline=True)
                     embed.add_field(name="Format", value=format_, inline=True)
                     embed.add_field(name="Size", value=size, inline=True)
