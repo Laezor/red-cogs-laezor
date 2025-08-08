@@ -1,25 +1,19 @@
-import discord
-from redbot.core import commands, app_commands
+from redbot.core import commands
 import requests
 
 class CrocdbSearch(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @app_commands.command(name="crocdbsearch", description="Search for ROMs using the CrocDB API.")
-    @app_commands.describe(
-        query="Game title to search for",
-        platform="Platform IDs (e.g., snes, ps2)",
-        region="Region IDs (e.g., us, eu)"
-    )
+    @commands.command(name="crocdbsearch", help="Search for ROMs using the CrocDB API. Usage: [p]crocdbsearch <query> [platform] [region]")
     async def crocdbsearch(
         self,
-        interaction: discord.Interaction,
+        ctx: commands.Context,
         query: str,
         platform: str = "ps2",
         region: str = "us"
     ):
-        await interaction.response.defer(ephemeral=True)  # Prevents timeouts on slow requests
+        
 
         url = "https://api.crocdb.net/search"
         headers = {"Content-Type": "application/json"}
@@ -38,7 +32,7 @@ class CrocdbSearch(commands.Cog):
                 results = data.get("data", {}).get("results", [])
 
                 if not results:
-                    await interaction.followup.send("No results found.", ephemeral=True)
+                    await ctx.send("No results found.")
                     return
 
                 # Build a response message
@@ -51,8 +45,8 @@ class CrocdbSearch(commands.Cog):
                     msg_lines.append(f"**{title}** (`{plat}`) - [Link]({link}) - ROM ID: `{rom_id}`")
 
                 message = "\n".join(msg_lines)
-                await interaction.followup.send(message[:2000], ephemeral=True)  # Discord max msg length
+                await ctx.send(message[:2000])  # Discord max msg length
             else:
-                await interaction.followup.send(f"API error: {response.status_code}", ephemeral=True)
+                await ctx.send(f"API error: {response.status_code}")
         except Exception as e:
-            await interaction.followup.send(f"Error: {e}", ephemeral=True)
+            await ctx.send(f"Error: {e}")
