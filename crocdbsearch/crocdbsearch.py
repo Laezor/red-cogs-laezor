@@ -9,8 +9,8 @@ class CrocdbSearch(commands.Cog):
     @app_commands.command(name="crocdbsearch", description="Search for ROMs using the CrocDB API.")
     @app_commands.describe(
         query="Game title to search for",
-        platform="Platform ID (e.g., snes, ps2)",
-        region="Region ID (e.g., us, eu)"
+        platform="Platform IDs (e.g., snes, ps2)",
+        region="Region IDs (e.g., us, eu)"
     )
     async def crocdbsearch(
         self,
