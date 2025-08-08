@@ -9,7 +9,7 @@ class Crocdb(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command()
+    @commands.command(aliases=["crocdbsearch"])
     async def crocdb(self, ctx, query: str = None, platform: str = "ps2", region: str = "us"):
         """Get a random or search for a game from CrocDB.net."""
         if query:
