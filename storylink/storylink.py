@@ -72,7 +72,7 @@ class StoryLink(commands.Cog):
 
         story = (
             f"🌟 **Alternate Universe Report** 🌟\n\n"
-            f"In another timeline, {person1.mention} and {person2.mention} met {random.choice(settings)} "
+            f"In another timeline, {person1} and {person2} met {random.choice(settings)} "
             f"and together they {random.choice(actions)}. The world was never the same again."
         )
 
