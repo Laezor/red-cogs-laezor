@@ -41,7 +41,27 @@ class StoryLink(commands.Cog):
             "during a thunderstorm made of glitter",
             "while surfing a lava wave",
             "in the middle of a zombie disco",
-            "while hiding from invisible squirrels"
+            "while hiding from invisible squirrels",
+            "inside a giant teacup",
+            "during an alien karaoke night",
+            "in a cave filled with glowing mushrooms",
+            "while being chased by a sentient sandwich",
+            "inside a library that eats books",
+            "at the bottom of a rainbow",
+            "while time-traveling with a toaster",
+            "in a galaxy shaped like a donut",
+            "during a talking cat conference",
+            "inside a pocket dimension in someone’s sock",
+            "while avoiding a stampede of jellyfish",
+            "on a rollercoaster through space",
+            "during a meteor shower made of marshmallows",
+            "inside a chocolate pyramid",
+            "while solving crimes with a penguin detective",
+            "in a cloud city powered by kites",
+            "while riding a flying sofa",
+            "inside a sentient vending machine",
+            "during a dance battle with skeletons",
+            "while trapped in a maze of mirrors"
         ]
 
         actions = [
@@ -64,7 +84,27 @@ class StoryLink(commands.Cog):
             "disguised themselves as flamingos",
             "invented a new language made of whistles",
             "tamed a tornado",
-            "turned a volcano into a chocolate fountain"
+            "turned a volcano into a chocolate fountain",
+            "played chess with an octopus",
+            "discovered a new color and named it after themselves",
+            "accidentally shrank the moon",
+            "turned the sun into a disco ball",
+            "built a submarine out of bread",
+            "gave a motivational speech to snails",
+            "taught a cactus to sing opera",
+            "trapped lightning in a teacup",
+            "programmed clouds to rain glitter",
+            "played hide-and-seek with aliens",
+            "built a city out of jelly",
+            "invented self-writing books",
+            "trained a swarm of bees to paint portraits",
+            "turned mountains into giant slides",
+            "played rock-paper-scissors with fate",
+            "built a time machine out of spoons",
+            "taught robots how to bake cookies",
+            "made a trampoline park for kangaroos",
+            "created a black hole in a jar",
+            "hosted the first zero-gravity comedy show"
         ]
 
         random.shuffle(settings)
