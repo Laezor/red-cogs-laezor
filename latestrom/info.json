@@ -1,0 +1,16 @@
+{
+    "author": ["Laezor"],
+    "description": "Get the latest ROM hacks from ROMhacking.net!",
+    "disabled": false,
+    "end_user_data_statement": "",
+    "hidden": false,
+    "install_msg": "Thank you for installing! Use `[p]latestrom` to get the latest ROM hacks from ROMhacking.net!",
+    "min_bot_version": "3.5.3",
+    "min_python_version": [3, 10, 0],
+    "permissions": ["embed_links"],
+    "required_cogs": {},
+    "requirements": ["feedparser"],
+    "short": "Get the latest ROM hacks from ROMhacking.net!",
+    "tags": ["romhacking"],
+    "type": "COG"
+  }
