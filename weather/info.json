@@ -1,0 +1,16 @@
+{
+    "author": ["Laezor"],
+    "description": "Get the weather from wttr.in!",
+    "disabled": false,
+    "end_user_data_statement": "",
+    "hidden": false,
+    "install_msg": "Thank you for installing! Use [p]weather to get the weather from wttr.in!",
+    "min_bot_version": "3.5.3",
+    "min_python_version": [3, 10, 0],
+    "permissions": ["embed_links"],
+    "required_cogs": {},
+    "requirements": [],
+    "short": "Get the weather from wttr.in!",
+    "tags": ["weather"],
+    "type": "COG"
+  }
