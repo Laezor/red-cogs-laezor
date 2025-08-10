@@ -2,7 +2,7 @@ import discord
 import feedparser
 from redbot.core import commands
 
-class LatestRom(commands.Cog):
+class LatestHack(commands.Cog):
     """Fetch latest ROM hacks from ROMhacking.net RSS feed."""
 
     def __init__(self, bot):
@@ -10,7 +10,7 @@ class LatestRom(commands.Cog):
         self.feed_url = "https://www.romhacking.net/romhackingdotnet.rss"
 
     @commands.command()
-    async def latestrom(self, ctx, count: int = 5):
+    async def latesthack(self, ctx, count: int = 5):
         """Show the latest ROM hacks from ROMhacking.net (default: 5 results)."""
         try:
             feed = feedparser.parse(self.feed_url)

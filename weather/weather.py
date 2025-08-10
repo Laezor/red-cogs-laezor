@@ -14,7 +14,7 @@ class Weather(commands.Cog):
         Get weather from wttr.in.
         Example: [p]weather Athens
         """
-        url = f"https://wttr.in/{location or ''}"
+        url = f"https://wttr.in/{location or ''}?format=4"
         try:
             response = requests.get(url)
             response.raise_for_status()
