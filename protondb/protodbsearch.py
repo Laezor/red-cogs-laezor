@@ -1,6 +1,6 @@
 import aiohttp
 from redbot.core import commands, app_commands
-from discord import Interaction
+import discord
 
 class ProtonDBSearch(commands.Cog):
     """Search for games on the ProtonDB."""
