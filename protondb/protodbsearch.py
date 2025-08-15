@@ -1,6 +1,6 @@
 import aiohttp
 from redbot.core import commands, app_commands
-import discord
+from discord import Interaction
 
 class ProtonDBSearch(commands.Cog):
     """Search for games on the ProtonDB."""
@@ -8,7 +8,7 @@ class ProtonDBSearch(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    async def steam_autocomplete(self, current: str):
+    async def steam_autocomplete(self, interaction: Interaction, current: str):
         """Fetch autocomplete suggestions from Steam's storesearch API."""
         if not current:
             return []
