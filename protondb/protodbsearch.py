@@ -8,7 +8,7 @@ class ProtonDBSearch(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    async def steam_autocomplete(self, interaction: Interaction, current: str):
+    async def steam_autocomplete(self, current: str):
         """Fetch autocomplete suggestions from Steam's storesearch API."""
         if not current:
             return []
@@ -51,19 +51,14 @@ class ProtonDBSearch(commands.Cog):
                 if resp.status != 200:
                     return await ctx.send("Failed to fetch data from ProtonDB.")
                 data = await resp.json()
-        embed = discord.Embed(
-            title="ProtonDB Report",
-            description=f"**Best Reported Tier:** {data.get('bestReportedTier', 'N/A').title()}",
-            color=discord.Color.green() if data.get("tier", "").lower() == "platinum" else discord.Color.blurple()
-        )
-        embed.add_field(name="Tier", value=data.get("tier", "N/A").title(), inline=True)
-        embed.add_field(name="Trending Tier", value=data.get("trendingTier", "N/A").title(), inline=True)
-        embed.add_field(name="Confidence", value=str(data.get("confidence", "N/A")).capitalize(), inline=True)
-        embed.add_field(name="Score", value=str(data.get("score", "N/A")), inline=True)
-        embed.add_field(name="Total Reports", value=str(data.get("total", "N/A")), inline=True)
         
-        # Add tier description
-        tier = data.get("tier", "").lower()
+        tier = data.get("tier", "N/A")
+        trending_tier = data.get("trendingTier", "N/A")
+        confidence = str(data.get("confidence", "N/A")).capitalize()
+        score = str(data.get("score", "N/A"))
+        total = str(data.get("total", "N/A"))
+        best_reported_tier = data.get('bestReportedTier', 'N/A')
+        
         tier_descriptions = {
             "platinum": "Game works out of the box",
             "gold": "Runs perfectly after tweaks",
@@ -71,7 +66,17 @@ class ProtonDBSearch(commands.Cog):
             "bronze": "Runs but often crashes or some other issue",
             "borked": "Doesn't run"
         }
-        description = tier_descriptions.get(tier, "No description available.")
-        embed.add_field(name="Tier Description", value=description, inline=False)
-        await ctx.send(embed=embed)
+        description = tier_descriptions.get(tier.lower(), "No description available.")
+        
+        message = (
+            f"**ProtonDB Report**\n"
+            f"Best Reported Tier: {best_reported_tier.title()}\n"
+            f"Tier: {tier.title()}\n"
+            f"Trending Tier: {trending_tier.title()}\n"
+            f"Confidence: {confidence}\n"
+            f"Score: {score}\n"
+            f"Total Reports: {total}\n"
+            f"Tier Description: {description}"
+        )
+        await ctx.send(message)
         
