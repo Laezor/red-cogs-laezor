@@ -38,11 +38,11 @@ class ProtonDBSearch(commands.Cog):
 
         return suggestions
 
-    @commands.hybrid_command(name="protondbsearch", description="Search for a game on Steam")
-    @app_commands.describe(game="Start typing to search Steam")
+    @commands.hybrid_command(name="protondbsearch", description="Search for a game on ProtonDB")
+    @app_commands.describe(game="Start typing to search protondb")
     @app_commands.autocomplete(game=steam_autocomplete)
     async def protondbsearch(self, ctx: commands.Context, game: str):
-        """Slash + text command to search for a game on Steam."""
+        """Slash + text command to search for a game on ProtonDB."""
 
         url =  f"https://jazzy-starlight-aeea19.netlify.app/api/v1/reports/summaries/{game}.json"
 
