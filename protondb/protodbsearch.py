@@ -38,9 +38,40 @@ class ProtonDBSearch(commands.Cog):
 
         return suggestions
 
-    @commands.hybrid_command(name="steamsearch", description="Search for a game on Steam")
+    @commands.hybrid_command(name="protondbsearch", description="Search for a game on Steam")
     @app_commands.describe(game="Start typing to search Steam")
     @app_commands.autocomplete(game=steam_autocomplete)
-    async def steamsearch(self, ctx: commands.Context, game: str):
+    async def protondbsearch(self, ctx: commands.Context, game: str):
         """Slash + text command to search for a game on Steam."""
-        await ctx.send(f"You selected App ID: {game}")
+
+        url =  f"https://jazzy-starlight-aeea19.netlify.app/api/v1/reports/summaries/{game}.json"
+
+        async with aiohttp.ClientSession() as session:
+            async with session.get(url, timeout=5) as resp:
+                if resp.status != 200:
+                    return await ctx.send("Failed to fetch data from ProtonDB.")
+                data = await resp.json()
+        embed = discord.Embed(
+            title="ProtonDB Report",
+            description=f"**Best Reported Tier:** {data.get('bestReportedTier', 'N/A').title()}",
+            color=discord.Color.green() if data.get("tier", "").lower() == "platinum" else discord.Color.blurple()
+        )
+        embed.add_field(name="Tier", value=data.get("tier", "N/A").title(), inline=True)
+        embed.add_field(name="Trending Tier", value=data.get("trendingTier", "N/A").title(), inline=True)
+        embed.add_field(name="Confidence", value=str(data.get("confidence", "N/A")).capitalize(), inline=True)
+        embed.add_field(name="Score", value=str(data.get("score", "N/A")), inline=True)
+        embed.add_field(name="Total Reports", value=str(data.get("total", "N/A")), inline=True)
+        
+        # Add tier description
+        tier = data.get("tier", "").lower()
+        tier_descriptions = {
+            "platinum": "Game works out of the box",
+            "gold": "Runs perfectly after tweaks",
+            "silver": "Runs with minor issues, generally playable",
+            "bronze": "Runs but often crashes or some other issue",
+            "borked": "Doesn't run"
+        }
+        description = tier_descriptions.get(tier, "No description available.")
+        embed.add_field(name="Tier Description", value=description, inline=False)
+        await ctx.send(embed=embed)
+        
