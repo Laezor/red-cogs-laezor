@@ -44,6 +44,16 @@ class ProtonDBSearch(commands.Cog):
     async def protondbsearch(self, ctx: commands.Context, game: str):
         """Slash + text command to search for a game on ProtonDB."""
 
+        # Fetch game title from Steam API
+        steam_title = None
+        steam_url = f"https://store.steampowered.com/api/appdetails?appids={game}&l=english"
+        async with aiohttp.ClientSession() as session:
+            async with session.get(steam_url, timeout=5) as resp:
+                if resp.status == 200:
+                    steam_data = await resp.json()
+                    app_data = steam_data.get(game, {}).get("data", {})
+                    steam_title = app_data.get("name")
+
         url =  f"https://jazzy-starlight-aeea19.netlify.app/api/v1/reports/summaries/{game}.json"
 
         async with aiohttp.ClientSession() as session:
@@ -70,6 +80,7 @@ class ProtonDBSearch(commands.Cog):
         
         message = (
             f"**ProtonDB Report**\n"
+            f"Game: {steam_title or 'Unknown Title'} (AppID: {game})\n"
             f"Best Reported Tier: {best_reported_tier.title()}\n"
             f"Tier: {tier.title()}\n"
             f"Trending Tier: {trending_tier.title()}\n"
