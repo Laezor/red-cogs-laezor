@@ -37,6 +37,7 @@ class RandomMovie(commands.Cog):
             overview = movie.get("overview", "No description available.")
             runtime = movie.get("runtime", "Unknown")
             movie_id = movie.get("id")
+            release_date = movie.get("release_on", "Unknown")
 
             embed = discord.Embed(
                 title=title,
@@ -44,6 +45,7 @@ class RandomMovie(commands.Cog):
                 color=discord.Color.blue()
             )
             embed.add_field(name="Runtime", value=f"{runtime} minutes", inline=False)
+            embed.add_field(name="Released", value=f"{release_date}", inline=False)
             if movie_id:
                 embed.set_image(url=f"https://img.rgstatic.com/content/movie/{movie_id}/poster-342.webp")
 
