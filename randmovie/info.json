@@ -1,0 +1,16 @@
+{
+    "author": ["Laezor"],
+    "description": "Get a random movie from Reelgood!",
+    "disabled": false,
+    "end_user_data_statement": "",
+    "hidden": false,
+    "install_msg": "Thank you for installing! Use `[p]randommovie` to get a random movie from Reelgood!  Donation: https://ko-fi.com/laezor get me a kofi!",
+    "min_bot_version": "3.5.3",
+    "min_python_version": [3, 10, 0],
+    "permissions": ["embed_links"],
+    "required_cogs": {},
+    "requirements": ["discord.py"],
+    "short": "Get a random movie from Reelgood!",
+    "tags": ["reelgood"],
+    "type": "COG"
+  }
