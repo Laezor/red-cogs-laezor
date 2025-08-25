@@ -37,7 +37,7 @@ class RandomMovie(commands.Cog):
             overview = movie.get("overview", "No description available.")
             runtime = movie.get("runtime", "Unknown")
             movie_id = movie.get("id")
-            release_date = movie.get("released_on", "Unknown")
+            release_date = str(movie.get("released_on", "Unknown"))[:4]
 
             embed = discord.Embed(
                 title=title,
